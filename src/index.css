@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply dark:bg-zinc-950 dark:text-zinc-50 font-inter;
+  }
+}
