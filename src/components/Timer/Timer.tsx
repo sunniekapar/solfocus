@@ -7,21 +7,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { MdSkipNext } from 'react-icons/md';
 import { useEffect, useState } from 'react';
-
-const pomodoroTimes = [
-  {
-    name: 'Pomodoro',
-    time: 25 * 60,
-  },
-  {
-    name: 'Short Break',
-    time: 5 * 60,
-  },
-  {
-    name: 'Long Break',
-    time: 15 * 60,
-  },
-];
+import { pomodoroTimes } from '@/data';
 
 export default function Timer() {
   const [pomodoroType, setPomodoroType] = useState(pomodoroTimes[0].name);
