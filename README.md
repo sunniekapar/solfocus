@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+# SolFocus
+SolFocus is a minimalistic productivity app designed for students. It utilizes the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique) with a task management system that allows students to track their progress throughout their study session.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Getting Started
 
-Currently, two official plugins are available:
+### Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you start, ensure you have the following installed:
 
-## Expanding the ESLint configuration
+- Node.js (Download from [Node.js website](https://nodejs.org/))
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installing
 
-- Configure the top-level `parserOptions` property like this:
+### 1. Clone the Repository
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+First, clone the project repository to your local machine:
+
+```bash
+gh repo clone sunniekapar/solfocus
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 2. Run the app
+To run the app, simply type the command:
+```bash
+npm run dev
+```
+Now open the app in http://localhost:5173/
+
+## Built With
+
+* [Vite](https://vitejs.dev) - The web framework used
+* [Shadcn](https://ui.shadcn.com) - Used for styling
+* [Firebase](https://firebase.google.com) - Used for MFA and OAuth services
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
