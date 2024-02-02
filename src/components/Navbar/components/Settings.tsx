@@ -13,8 +13,6 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { DialogTitle } from '@radix-ui/react-dialog';
 import { Label } from '@/components/ui/label';
-import NavButton from './NavButton'
-import { MdSettings } from 'react-icons/md';
 
 interface SettingsProps {
   dialogOpen: boolean;

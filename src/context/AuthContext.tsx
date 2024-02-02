@@ -39,7 +39,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         alert('Email already in use');
       } else {
         console.error('Error during sign up:', error);
-        alert('Error during sign up.');
+        onError(error.message || 'An error occurred during sign up');
       }
     } finally {
       setIsLoading(false);
