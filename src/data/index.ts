@@ -1,7 +1,7 @@
 export const pomodoroTimes = [
   {
     name: 'Pomodoro',
-    time: 25 * 60,
+    time: 50 * 60,
   },
   {
     name: 'Short Break',

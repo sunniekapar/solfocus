@@ -23,8 +23,18 @@ import { useState } from 'react';
 import { TaskProps } from '@/interfaces';
 
 interface AddTaskProps {
-  onAddTask: ({...props} : TaskProps) => void; // Adjust the type as needed
+  onAddTask?: ({ ...props }: TaskProps) => Promise<void>;
+  onEditTask?: (
+    id: string | number,
+    taskName: string,
+    taskDescription?: string
+  ) => Promise<void>;
   onCancel: () => void;
+  defaultValues?: {
+    taskName: string;
+    taskDescription: string;
+    id: string | number;
+  };
 }
 
 const formSchema = z.object({
@@ -45,19 +55,43 @@ const formSchema = z.object({
     ),
 });
 
-export default function AddTask({ onAddTask, onCancel }: AddTaskProps) {
-  const [descriptionAdded, setDescriptionAdded] = useState(false);
+export default function AddTask({
+  defaultValues = {
+    taskName: '',
+    taskDescription: '',
+    id: '',
+  },
+  onAddTask,
+  onEditTask,
+  onCancel,
+}: AddTaskProps) {
+  const [descriptionAdded, setDescriptionAdded] = useState(
+    !!defaultValues.taskDescription
+  );
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      taskName: defaultValues.taskName,
+      taskDescription: defaultValues.taskDescription,
+    },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const newTask = {
-      ...values,
-      completed: false,
-      id: Date.now()
+    if (onEditTask) {
+      onEditTask(
+        defaultValues.id,
+        values.taskName,
+        values.taskDescription ? values.taskDescription : ''
+      );
+    } else {
+      const newTask = {
+        ...values,
+        completed: false,
+        id: Date.now(),
+      };
+      onAddTask!(newTask);
     }
-    onAddTask(newTask);
     form.reset();
     onCancel();
   }
@@ -88,6 +122,7 @@ export default function AddTask({ onAddTask, onCancel }: AddTaskProps) {
               )}
             />
           </CardHeader>
+
           <CardContent>
             {descriptionAdded ? (
               <FormField
@@ -120,6 +155,7 @@ export default function AddTask({ onAddTask, onCancel }: AddTaskProps) {
               </Button>
             )}
           </CardContent>
+
           <CardFooter className="justify-end gap-2">
             <Button
               onClick={onCancel}

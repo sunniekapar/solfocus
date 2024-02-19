@@ -19,12 +19,10 @@ interface SettingsProps {
   dialogClose: () => void;
 }
 
-export default function Settings({dialogOpen, dialogClose} : SettingsProps) {
+export default function Settings({ dialogOpen, dialogClose }: SettingsProps) {
   return (
     <Dialog open={dialogOpen} onOpenChange={dialogClose}>
-      <DialogTrigger asChild>
-        
-      </DialogTrigger>
+      <DialogTrigger asChild></DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">Settings</DialogTitle>
